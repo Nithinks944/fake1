@@ -1,11 +1,10 @@
+import subprocess
 import sys
-import unittest
 
 
 def main() -> int:
-    suite = unittest.defaultTestLoader.discover("tests")
-    result = unittest.TextTestRunner(verbosity=2).run(suite)
-    return 0 if result.wasSuccessful() else 1
+    completed = subprocess.run([sys.executable, "-m", "pytest", "-q"], check=False)
+    return completed.returncode
 
 
 if __name__ == "__main__":

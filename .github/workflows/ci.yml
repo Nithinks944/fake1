@@ -16,5 +16,8 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Run local tests script
-        run: python run_tests.py
+      - name: Install test dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pytest
+        run: pytest -q
